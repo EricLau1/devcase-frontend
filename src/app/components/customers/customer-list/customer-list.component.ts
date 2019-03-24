@@ -34,6 +34,7 @@ export class CustomerListComponent implements OnInit {
           this.customersService.customers = this.customersService.customers.filter(c => c.id != this.selectedElement);
           this.selectedElement = null;
           this.currentPage = 1;
+          this.customersService.customerDetails = null;
           this.refresh();
         }, 
         errors => console.log(errors));
