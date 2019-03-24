@@ -1,0 +1,16 @@
+.container {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.bg-white {
+    background-color: #fff;
+}
+
+.f1 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.pagination i {
+    margin: 0 10px 0 10px;
+    cursor: pointer;
+}

@@ -1,0 +1,21 @@
+<div class="container-login">
+  <form class="form-login" #form="ngForm" method="POST" >
+    <h1 class="logo">Login</h1>
+    <p class="error" *ngIf="message != ''">{{ message }}</p>
+    <div class="form-group">
+      <label for="email"> <i class="fas fa-envelope"></i></label>
+      <input type="email" class="form-control" name="email" id="email" [(ngModel)]="model.email" 
+      #email="ngModel" placeholder="Digite o email" required email/>
+    </div>
+    <div class="form-group">
+      <label for="password"><i class="fas fa-key"></i> </label>
+      <input type="password" class="form-control" name="password" id="password" [(ngModel)]="model.password" 
+      #password="ngModel" placeholder="Digite a senha" required/>
+    </div>
+    <button type="button" class="btn btn-dark block" (click)="signIn()">Entrar <i class="fas fa-sign-in-alt"></i></button>
+  </form>
+  <br class="my- 4"/>
+  <p >
+    <code class="text-muted"><small>VsmDevCase by Eric Lau de Olveira - 2019</small></code>
+  </p>
+</div>

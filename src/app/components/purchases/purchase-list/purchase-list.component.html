@@ -1,0 +1,25 @@
+<p class="text-right">
+    <span class="float-left"><i class="fas fa-list-ol"></i> <small> Compras</small></span>
+    <i class="fas fa-chevron-left cursor-pointer" (click)="prevPage()"></i>
+    {{ currentPage }} / {{ totalPages }} 
+    <i class="fas fa-chevron-right cursor-pointer" (click)="nextPage()"></i>
+</p>
+
+<table class="table table-bordered table-hover text-center">
+  <thead class="thead-dark">
+    <tr>
+      <th>Cliente</th>
+      <th>Compra R$</th>
+      <th>Comprou em </th>
+      <th>Pontos</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let purchase of purchases"> 
+      <td>{{ purchase.customer.firstName }} {{ purchase.customer.lastName }}</td>
+      <td class="text-success font-weight-bold">{{ purchase.cashSpent | currency }}</td>
+      <td>{{ purchase.createdAt | date : 'MMM d, y, h:mm:ss a' }} </td>
+      <td class="text-primary font-weight-bold">{{ purchase.points }}</td>
+    </tr>
+  </tbody>
+</table>

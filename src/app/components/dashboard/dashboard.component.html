@@ -1,0 +1,101 @@
+<div class="container">
+    <app-menu></app-menu>
+    <div class="jumbotron bg-white">
+        <h1 class="font-weight-bold text-center">Dashboard</h1>
+    </div>
+    
+    <hr class="my-4">
+    <div class="row">
+        <div class="col-md-4">
+            <table class="table table-borderless text-center">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Clientes</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><i class="fas fa-users fa-lg"></i></td>
+                        <td>{{ totalCustomers }}</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-female fa-lg"></i></td>
+                        <td>{{ totalFemaleCustomers }} </td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-male fa-lg"></i></td>
+                        <td>{{ totalMaleCustomers }} </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-4">
+            <table class="table table-borderless text-center">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Compras</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><i class="fas fa-coins"></i></td>
+                        <td>{{ totalPurchases }}</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-venus fa-lg"></i></td>
+                        <td>  {{ totalFemalePurchases }} </td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-mars fa-lg"></i></td>
+                        <td>{{ totalMalePurchases}} </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-4">
+            <app-purchase-form></app-purchase-form>
+        </div>
+    </div>
+
+    <hr class="my-4" />
+    <div>
+        <i class="fas fa-th-list"></i> <small> Clientes</small>
+        <div class="float-right pagination">
+                <i class="fas fa-chevron-left" (click)="prevPage()"></i>
+                {{ currentPage }} / {{ totalPages }} 
+                <i class="fas fa-chevron-right" (click)="nextPage()"></i>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 table-responsive">
+            <table class="table table-bordered text-center">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
+                        <th>Selecionar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let customer of customers">
+                        <td>{{ customer.firstName  }} {{ customer.lastName}}</td>
+                        <td>{{ customer.email  }}</td>
+                        <td>{{ customer.phone }} </td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-outline-success" (click)="prepare(customer)" >
+                                <i class="far fa-check-circle"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>       
+        </div>
+    </div>
+    <br class="my- 4"/>
+    <p class="text-center">
+      <code class="text-muted"><small>VsmDevCase by Eric Lau de Olveira - 2019</small></code>
+    </p>
+</div>

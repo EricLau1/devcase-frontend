@@ -1,0 +1,93 @@
+<form method="post" action="" #form="ngForm" (ngSubmit)="save(form)" novalidate>
+  <input type="hidden" name="id" [(ngModel)]="customersService.model.id" #id="ngModel" value="customersService.model.id" />
+  <div class="form-group">
+    <div class="form-row">
+      <div class="col-md-6">
+        <label><small>Primeiro nome</small></label>
+        <input type="text" class="form-control" name="firstName" 
+        [(ngModel)]="customersService.model.firstName" #firstName="ngModel"
+        placeholder="Primeiro nome" required />
+
+        <div class="error" *ngIf="form.submitted && firstName.invalid">
+          <small class="text-danger" *ngIf="firstName.errors.required"> Digite o nome </small>
+        </div>
+      </div>
+      <div class="col-md-6">
+          <label><small>Sobrenome</small></label>
+          <input type="text" class="form-control" placeholder="Sobrenome"
+          name="lastName" [(ngModel)]="customersService.model.lastName" #lastName="ngModel" required />
+
+          <div class="error" *ngIf="form.submitted && lastName.invalid">
+            <small class="text-danger" *ngIf="lastName.errors.required"> Digite o sobrenome </small>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-row">
+      <div class="col-md-12">
+          <label><small>Endereço</small></label>
+        <input type="text" class="form-control" placeholder="Endereço" 
+        name="address" [(ngModel)]="customersService.model.address" #address="ngModel" required />
+        <div class="error" *ngIf="form.submitted && address.invalid">
+          <small class="text-danger" *ngIf="address.errors.required"> Digite o endereço </small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-row">
+      <div class="col-md-6">
+          <label><small>CPF</small></label>
+        <input type="text" name="cpf" class="form-control" placeholder="CPF" 
+        [dropSpecialCharacters]="false" mask="000.000.000-00" 
+        name="cpf" [(ngModel)]="customersService.model.cpf" #cpf="ngModel" required />
+        <div class="error" *ngIf="form.submitted && cpf.invalid">
+          <small class="text-danger" *ngIf="cpf.errors.required"> Digite o CPF </small>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label><small>RG</small></label>
+        <input type="text" name="rg" class="form-control" placeholder="RG" 
+        [dropSpecialCharacters]="false" mask="00.000.000-0"
+        name="rg" [(ngModel)]="customersService.model.rg" #rg="ngModel" required/>
+        <div class="error" *ngIf="form.submitted && rg.invalid">
+          <small class="text-danger" *ngIf="rg.errors.required"> Digite o RG </small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+      <label><small>Telefone</small></label>
+    <input type="text" name="phone" class="form-control" placeholder="Telefone" 
+    [dropSpecialCharacters]="false" mask="(00) 00000-0000" 
+    name="phone" [(ngModel)]="customersService.model.phone" #phone="ngModel" required />
+    <div class="error" *ngIf="form.submitted && phone.invalid">
+      <small class="text-danger" *ngIf="phone.errors.required"> Digite o telefone </small>
+    </div>
+  </div>
+  <div class="form-group">
+      <label><small>Email</small></label>
+    <input type="email" name="email" class="form-control" placeholder="Email" required email
+    name="email" [(ngModel)]="customersService.model.email" #email="ngModel" />
+    <div class="error" *ngIf="form.submitted && email.invalid">
+      <small class="text-danger" *ngIf="email.errors.required"> Digite o email </small>
+      <small class="text-danger" *ngIf="email.errors.email"> Digite um email válido </small>
+    </div>
+  </div>
+  <div class="form-group">
+    <label><small>Gênero</small></label>
+    <select class="form-control" name="gender" [(ngModel)]="customersService.model.gender" #gender="ngModel" required>
+      <option value="" disabled>Selecione</option>
+      <option *ngFor="let gender of genders" [value]="gender.value">{{ gender.text }}</option>
+    </select>
+    <div class="error" *ngIf="form.submitted && gender.invalid">
+      <small class="text-danger" *ngIf="gender.errors.required"> Selecione o sexo </small>
+
+    </div>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary btn-sm mr-2">Salvar</button>
+    <button type="button" class="btn btn-secondary btn-sm" (click)="clear()">Limpar</button>
+  </div>
+</form>

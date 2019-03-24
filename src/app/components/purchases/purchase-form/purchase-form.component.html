@@ -1,0 +1,29 @@
+<div>
+    <p *ngIf="purchasesService.purchase.customer != null">
+        <small>
+            <strong class="logo">Cliente: # {{ purchasesService.purchase.customer.id }}</strong>
+            <br /> 
+            {{ purchasesService.purchase.customer.firstName }} 
+            {{ purchasesService.purchase.customer.lastName }}
+            <br/>
+            {{ purchasesService.purchase.customer.address }} 
+            <br />
+            CPF: {{ purchasesService.purchase.customer.cpf }}
+            <br>
+           <button class="btn btn-outline-danger btn-sm block" (click)="removePrepare()">
+               <i class="far fa-trash-alt"></i> remover
+            </button>
+        </small>
+    </p>
+    <p *ngIf="purchasesService.purchase.customer == null">Selecione um cliente</p>
+ 
+    <form action="" method="post" autocomplete="off">
+        <div class="form-group">
+            <label for="cashSpent"><i class="fas fa-shopping-cart"></i></label>
+            <input type="text" class="form-control" name="cashSpent"  id="cashSpent" currencyMask
+            [(ngModel)]="cashValue" #cashSpent="ngModel" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" 
+            required autocomplete="off"/>
+        </div>
+        <button type="submit" class="btn btn-success btn-sm btn-block" (click)="buy()">Fechar compra <i class="fas fa-cash-register"></i></button>
+    </form>
+</div>

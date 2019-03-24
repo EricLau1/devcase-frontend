@@ -1,0 +1,35 @@
+<div *ngIf="customersService.customerDetails != null">
+    <hr class="my-4">
+    <small>  
+      <h3 class="lead"> 
+        {{ customersService.customerDetails.firstName }} 
+        {{ customersService.customerDetails.lastName}}
+        <small><i class="fas fa-info-circle"></i></small>
+      </h3>
+      <table class="table table-sm table-borderless">
+        <tr>
+          <td><i class="fas fa-map-marker-alt"></i>
+            {{ customersService.customerDetails.address }}</td>
+        </tr>
+        <tr>
+          <td><i class="fas fa-phone"></i>
+            {{ customersService.customerDetails.phone }}</td>
+        </tr>
+        <tr>
+          <td><i class="far fa-envelope"></i>
+            {{ customersService.customerDetails.email }}</td>
+        </tr>
+        <tr>
+          <td><i class="far fa-id-card"></i>
+            {{ customersService.customerDetails.cpf }}</td>
+        </tr>
+        <tr>
+          <td><i class="fas fa-fingerprint"></i>
+            {{ customersService.customerDetails.rg }}</td>
+        </tr>
+      </table>
+      <p class="text-muted"> 
+          Atualizado em: {{ customersService.customerDetails.updatedAt | date : 'MMM d, y, h:mm:ss a' }}
+      </p>
+    </small>
+  </div>
